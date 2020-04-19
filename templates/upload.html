@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment File Detector</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-grid.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-grid.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-reboot.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-reboot.min.css')}}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+
+    <h4>Sentiment Detector</h4>
+    <ul class="navbar-nav ml-auto topnav">
+      <li class="nav-item">
+        <a href="{{url_for('home')}}" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('upload_file')}}" class="nav-link"> <strong>Upload File</strong></a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <h4>Upload Your File Here</h4>
+    <form method="POST" action="/showData" enctype="multipart/form-data">
+      <input type="file" name="inputFile">
+      <input type="submit" value="upload">
+    </form>
+
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="mb-5">
+        {% if tables %}
+        <div class="text-center justify-content-center">
+          <h1>Show Data</h1>
+          <p>Total Data : {{total}}</p>
+        </div>
+
+        <div style="overflow: auto; width: auto; height: 300px;">
+          {% for table in tables %}
+          {{ table|safe }}
+          {% endfor %}
+        </div>
+
+        <div>
+          <form method="POST" action="/predicted">
+            <input type="submit" value="Predict">
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if tables2 %}
+  <div class="container">
+    <div class="row text-center justify-content-center" data-aos="fade-up">
+      <div class="col-lg-6 text-center">
+        <h2 class="section-title w-100 mx-auto">Prediction Result</h2>
+      </div>
+    </div>
+    <div class="row align-items-center" data-aos="fade-up" data-aos-delay="100">
+      <p>Positif = {{'%0.2f'|format(posP)|float}}% <br>
+        Negatif = {{'%0.2f'|format(negP)|float}}%<br>
+        Netral = {{'%0.2f'|format(netP)|float}}% <br>
+        <div style="overflow: auto; width: fit-content; height: 300px;">
+          {% for table in tables2 %}
+          {{ table|safe }}
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+  <script src="{{url_for('static', filename='bootstrap.bundle.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Detector</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-grid.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-grid.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-reboot.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-reboot.min.css')}}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+
+    <h4>Sentiment Detector</h4>
+    <ul class="navbar-nav ml-auto topnav">
+      <li class="nav-item">
+        <a href="{{url_for('home')}}" class="nav-link"> <strong>Home</strong></a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url_for('upload_file')}}" class="nav-link">Upload File</a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+  <!-- Main Input For Receiving Query to our ML -->
+  <form action="{{ url_for('predict')}}" method="post">
+    <input type="text" name="Comment" placeholder="Comment" required="required" class="form-control" />
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+  </form>
+  <div class="container-fluid">
+    <br>
+    {{comment_content}}
+    <br>
+    {{ prediction_text }}
+
+  </div>
+
+  <script src="{{url_for('static', filename='bootstrap.bundle.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.js')}}"></script>
+  <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+
+</body>
+
+</html>
