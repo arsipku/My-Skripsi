@@ -11,8 +11,8 @@ import gensim
 from gensim.models import FastText
 
 app = Flask(__name__, static_folder='static', template_folder='templates') #Initialize the flask App
-model = pickle.load(open('model_rf_byu200_02TS_Normal.pkl', 'rb'))
-loc = "FastTextModels/saved_model_gensim200SG_BYU.bin"
+model = pickle.load(open('model_rf_byu200_02TS_Normal.pkl', 'rb')) # You can change it with your own Random Forest Model or else
+loc = "FastTextModels/saved_model_gensim200SG_BYU.bin" #You can Change it by your own pre-trained model
 model_ft = FastText.load(loc)
 connection = pymysql.connect(host='localhost', user='root', password='', database='sentimen')
 count = 0
