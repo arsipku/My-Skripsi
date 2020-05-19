@@ -10,9 +10,10 @@
 ```
 python app.py
 ```
-7. After that, please wait for a while until **127.0.0.1** *(this can be changed according to your setting in your PC)* appears on your prompt. And you can open the link and enjoy it :D.
+7. After that, please wait for a while until **127.0.0.1** *(this can be changed according to your setting in your PC)* appears on your prompt. And you can open the link and enjoy it :D. You can use GoJek dataset at **./Datasets/GoJek.xlsx** for the example for prediction.
 
 ## How to train the Random Forest Model
 1. Make sure you have installed Jupyter Notebook in your PC.
-2. You can make and train your own Random Forest model with **Whole_Data_BYU200_02TestSize_Normal.ipynb** file.
-3. Read & run the code & comment, and adapt the directory and support file with your own directory.
+2. Dataset for the Classification can be seen at **./Datasets/SentimentDatasetonAppReviewfromAppStore.xlsx**.
+3. You can make and train your own Random Forest model with **Whole_Data_BYU200_02TestSize_Normal.ipynb** file.
+4. Read & run the code & comment, and adapt the directory and support file with your own directory.
